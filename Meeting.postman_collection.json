@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "085be35d-bd54-4eae-95dc-dd34dd07a42a",
+		"name": "Meeting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "reserveMeeting",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const moment = require('moment');",
+							"const startDate = moment('2022-03-18 17:17:00', 'YYYY-MM-DD hh:mm:ss A');",
+							"const endDate = moment('2022-03-18 18:00:00', 'YYYY-MM-DD hh:mm:ss A')",
+							"const roomId = 6;",
+							"const requiredSeatsNumber = 2;",
+							"const isMultimediaRequired = false;",
+							"pm.environment.set('startDate', startDate);",
+							"pm.environment.set('endDate', endDate);",
+							"pm.environment.set('roomId', roomId);",
+							"pm.environment.set('requiredSeatsNumber', requiredSeatsNumber);",
+							"pm.environment.set('isMultimediaRequired', isMultimediaRequired);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\": \"{{startDate}}\",\n    \"endDate\": \"{{endDate}}\",\n    \"roomId\": \"{{roomId}}\",\n    \"requiredSeatsNumber\": \"{{requiredSeatsNumber}}\",\n    \"isMultimediaRequired\": \"{{isMultimediaRequired}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/reservation/v1/reserveMeeting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservation",
+						"v1",
+						"reserveMeeting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetchRoomsByConditions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/room/v1/fetchRoomsByConditions/3/false/2000-03-18 15:13:00/2009-03-18 15:13:00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"room",
+						"v1",
+						"fetchRoomsByConditions",
+						"3",
+						"false",
+						"2000-03-18 15:13:00",
+						"2009-03-18 15:13:00"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetchAllReservationsByDate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/reservation/v1/fetchAllReservationsByDate/2022-03-18/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"reservation",
+						"v1",
+						"fetchAllReservationsByDate",
+						"2022-03-18",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "swaggerApiDocs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v2/api-docs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v2",
+						"api-docs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
