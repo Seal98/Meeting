@@ -2,6 +2,7 @@ package com.globant.meeting.dto;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -25,7 +26,8 @@ public class RoomDTOTest {
     }
 
     @Test
-    void checkFloorDTOCreationWithAllParams(){
+    @DisplayName("5.0.0 Check if Room DTO can be created correctly")
+    void checkRoomDTOCreationWithAllParams(){
         assert(roomDTO.getId() == 3);
         assert(roomDTO.getFloor() == floorDTO);
         assert(roomDTO.getNumber() == 7);
@@ -34,7 +36,8 @@ public class RoomDTOTest {
     }
 
     @Test
-    void checkFloorDTOCreationWithNoParams(){
+    @DisplayName("5.0.1 Check if Building DTO No Args constructor works as expected")
+    void checkRoomDTOCreationWithNoParams(){
         roomDTO = new RoomDTO();
         assert(roomDTO.getId() == 0);
         assert(roomDTO.getFloor() == null);

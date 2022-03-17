@@ -8,6 +8,7 @@ import com.globant.meeting.entity.ReservationDTO;
 import com.globant.meeting.exception.ReservationException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,6 +38,7 @@ public class ReservationServiceImplTest {
     }
 
     @Test
+    @DisplayName("8.0.0 Check if meeting can be reserved correctly and the return value is valid")
     void checkMeetingReservation() {
         assert reservation != null && reservationService.getReservationById(reservation.getId()).equals(reservation);
     }

@@ -5,6 +5,7 @@ import com.globant.meeting.entity.ReservationStatus;
 import com.globant.meeting.entity.ReservationType;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -35,7 +36,8 @@ public class ReservationDTOTest {
     }
 
     @Test
-    void checkFloorDTOCreationWithAllParams(){
+    @DisplayName("4.0.0 Check if Reservation DTO can be created correctly")
+    void checkReservationDTOCreationWithAllParams(){
         assert(reservationDTO.getId() == 3);
         assert(reservationDTO.getStartTs().getTime() == 123231231);
         assert(reservationDTO.getEndTs().getTime() == 334231231);
@@ -44,7 +46,8 @@ public class ReservationDTOTest {
     }
 
     @Test
-    void checkFloorDTOCreationWithNoParams(){
+    @DisplayName("4.0.1 Check if Reservation DTO No Args constructor works as expected")
+    void checkReservationDTOCreationWithNoParams(){
         reservationDTO = new ReservationDTO();
         assert(reservationDTO.getId() == 0);
         assert(reservationDTO.getStartTs() == null);

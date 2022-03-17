@@ -1,6 +1,7 @@
 package com.globant.meeting.dto;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -11,6 +12,7 @@ public class BuildingDTOTest {
     BuildingDTO buildingDTO;
 
     @Test
+    @DisplayName("1.0.0 Check if Building DTO can be created correctly")
     void checkBuildingDTOCreationWithAllParams(){
         buildingDTO = BuildingDTO.builder()
                 .id(3)
@@ -23,6 +25,7 @@ public class BuildingDTOTest {
     }
 
     @Test
+    @DisplayName("1.0.1 Check if Building DTO No Args constructor works as expected")
     void checkBuildingDTOCreationWithNoParams(){
         buildingDTO = new BuildingDTO();
         assert(buildingDTO.getId() == 0);

@@ -6,6 +6,7 @@ import com.globant.meeting.exception.ReservationException;
 import com.globant.meeting.repository.RoomRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,6 +34,7 @@ public class RoomServiceImplTest {
     }
 
     @Test
+    @DisplayName("10.0.0 Check if the room eligibility check by input params works as expected")
     void checkIfEligibleRoom() {
         assert roomService.findEligibleRoom(room.getId(), room.getSeatsNumber(), room.isMultimediaAvailable())
                 .equals(room);

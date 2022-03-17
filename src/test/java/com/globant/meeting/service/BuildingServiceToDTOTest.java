@@ -4,6 +4,7 @@ import com.globant.meeting.dto.BuildingDTO;
 import com.globant.meeting.entity.Building;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +30,7 @@ public class BuildingServiceToDTOTest {
     }
 
     @Test
+    @DisplayName("6.0.0 Check if Building entity can be converted to DTO correctly")
     void checkToDto() {
         assert(buildingService.toDTO(building)).equals(buildingDTO);
     }

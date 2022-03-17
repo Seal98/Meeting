@@ -7,6 +7,7 @@ import com.globant.meeting.entity.*;
 import com.globant.meeting.entity.ReservationDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -67,6 +68,7 @@ public class ReservationServiceToDTOTest {
     }
 
     @Test
+    @DisplayName("9.0.0 Check if Reservation entity can be converted to DTO correctly")
     void checkToDto() {
         assert(reservationService.toDTO(reservation)).equals(reservationDTO);
     }
