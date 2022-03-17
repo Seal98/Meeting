@@ -11,7 +11,8 @@ public interface RoomService {
 
     Room findEligibleRoom(int roomId, int requiredSeatsNumber, boolean isMultimediaRequired);
 
-    List<RoomDTO> getRoomsByConditions(int requiredSeatsNumber, boolean isMultimediaRequired, Timestamp startDate, Timestamp endDate);
+    List<RoomDTO> getRoomsByConditions(int requiredSeatsNumber, boolean isMultimediaRequired, Timestamp startTs,
+                                       Timestamp endTs);
 
     RoomDTO toDTO(Room room);
 

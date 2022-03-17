@@ -16,6 +16,7 @@ public class BuildingServiceImpl implements BuildingService {
         return BuildingDTO.builder()
                 .id(building.getId())
                 .name(building.getName())
+                .address(building.getAddress())
                 .build();
     }
 }

@@ -26,8 +26,9 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<RoomDTO> getRoomsByConditions(int requiredSeatsNumber, boolean isMultimediaRequired, Timestamp startDate, Timestamp endDate) {
-        return roomRepository.findRoomsByConditions(requiredSeatsNumber, isMultimediaRequired, startDate, endDate)
+    public List<RoomDTO> getRoomsByConditions(int requiredSeatsNumber, boolean isMultimediaRequired, Timestamp startTs,
+                                              Timestamp endTs) {
+        return roomRepository.findRoomsByConditions(requiredSeatsNumber, isMultimediaRequired, startTs, endTs)
                 .stream().map(this::toDTO).collect(Collectors.toList());
     }
 

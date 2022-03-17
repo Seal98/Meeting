@@ -14,10 +14,10 @@ public interface ReservationService {
 
     ReservationDTO getReservationById(int meetingId);
 
-    void reserveMeeting(Timestamp startDate, Timestamp endDate, int roomId, int requiredSeatsNumber,
+    ReservationDTO reserveMeeting(Timestamp startTs, Timestamp endTs, int roomId, int requiredSeatsNumber,
                         boolean isMultimediaRequired) throws ReservationException;
 
-    List<ReservationDTO> fetchAllReservationsByDate(Timestamp reservationDate, int roomId);
+    List<ReservationDTO> fetchAllReservationsByDate(Timestamp reservationTs, int roomId);
 
     ReservationDTO toDTO(Reservation reservation);
 

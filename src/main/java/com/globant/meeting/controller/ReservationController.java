@@ -42,8 +42,8 @@ public class ReservationController {
 
     @GetMapping("/fetchAllReservationsByDate/{reservationDate}/{roomId}")
     public List<ReservationDTO> fetchAllReservations(@PathVariable
-                                                  @DateTimeFormat(pattern = RESERVATIONS_FETCHING_DATE_FORMAT)
-                                                                 Date reservationDate,
+                                                     @DateTimeFormat(pattern = RESERVATIONS_FETCHING_DATE_FORMAT)
+                                                             Date reservationDate,
                                                      @PathVariable int roomId){
         return reservationService.fetchAllReservationsByDate(new Timestamp(reservationDate.getTime()), roomId);
     }

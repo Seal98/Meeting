@@ -39,32 +39,34 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Transactional
     @Override
-    public void reserveMeeting(Timestamp startDate, Timestamp endDate, int roomId, int requiredSeatsNumber,
+    public ReservationDTO reserveMeeting(Timestamp startTs, Timestamp endTs, int roomId, int requiredSeatsNumber,
                                boolean isMultimediaRequired) throws ReservationException {
+        Reservation reservation;
         Room room = roomService.findEligibleRoom(roomId, requiredSeatsNumber, isMultimediaRequired);
         if(room == null){
             throw new ReservationException("Required room doesn't match the provided conditions.");
         }
 
         List<Reservation> overlappedReservations = reservationRepository
-                .findActiveRoomReservationsInTimePeriod(startDate, endDate, roomId);
+                .findActiveRoomReservationsInTimePeriod(startTs, endTs, roomId);
 
         if(overlappedReservations.isEmpty()){
-            reservationRepository.save(Reservation.builder()
-                    .startTms(startDate)
+            reservation = reservationRepository.save(Reservation.builder()
+                    .startTs(startTs)
                     .reservationType(reservationTypeRepository.getMeetingType())
                     .reservationStatus(reservationStatusRepository.getReservedStatus())
-                    .endTms(endDate)
+                    .endTs(endTs)
                     .room(room)
                     .build());
         } else {
             throw new ReservationException("The selected time interval is not available for the reservation.");
         }
+        return this.toDTO(reservation);
     }
 
     @Override
-    public List<ReservationDTO> fetchAllReservationsByDate(Timestamp reservationTms, int roomId) {
-        return reservationRepository.fetchAllReservationsByDate(reservationTms, roomId)
+    public List<ReservationDTO> fetchAllReservationsByDate(Timestamp reservationTs, int roomId) {
+        return reservationRepository.fetchAllReservationsByDate(reservationTs, roomId)
                 .stream().map(this::toDTO).collect(Collectors.toList());
     }
 
@@ -72,8 +74,8 @@ public class ReservationServiceImpl implements ReservationService {
     public ReservationDTO toDTO(Reservation reservation) {
         return ReservationDTO.builder()
                 .id(reservation.getId())
-                .startTms(reservation.getStartTms())
-                .endTms(reservation.getEndTms())
+                .startTs(reservation.getStartTs())
+                .endTs(reservation.getEndTs())
                 .reservationType(reservation.getReservationType())
                 .reservationStatus(reservation.getReservationStatus())
                 .room(roomService.toDTO(reservation.getRoom()))

@@ -21,11 +21,11 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "START_TMS")
-    private Timestamp startTms;
+    @Column(name = "START_TS")
+    private Timestamp startTs;
 
-    @Column(name = "END_TMS")
-    private Timestamp endTms;
+    @Column(name = "END_TS")
+    private Timestamp endTs;
 
     @ManyToOne
     @JoinColumn(name = "RESERVATION_TYPE_ID")

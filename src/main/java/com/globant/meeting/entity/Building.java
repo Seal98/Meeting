@@ -24,6 +24,9 @@ public class Building {
     @Column(name = "NAME")
     private String name;
 
+    @Column(name = "ADDRESS")
+    private String address;
+
     @OneToMany(mappedBy = "building", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     private List<Floor> floor;

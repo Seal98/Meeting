@@ -15,23 +15,23 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     Reservation findMeetingById(int meetingId);
 
     @Query(value = "select reservation from Reservation reservation " +
-            "where SUBSTRING(reservation.startTms, 1, 10) <= SUBSTRING(:reservationTms, 1, 10) " +
-            "and SUBSTRING(:reservationTms, 1, 10) <= SUBSTRING(reservation.endTms, 1, 10) " +
+            "where SUBSTRING(reservation.startTs, 1, 10) <= SUBSTRING(:reservationTs, 1, 10) " +
+            "and SUBSTRING(:reservationTs, 1, 10) <= SUBSTRING(reservation.endTs, 1, 10) " +
             "and reservation.room.id = :roomId")
     List<Reservation> fetchAllReservationsByDate(
-            @Param("reservationTms") Timestamp reservationTms,
+            @Param("reservationTs") Timestamp reservationTs,
             @Param("roomId") int roomId
     );
 
     @Query(value = "select reservation from Reservation reservation " +
-            "where ((reservation.startTms >= :startTms and reservation.startTms < :endTms) " +
-            "or (reservation.endTms > :startTms and reservation.endTms <= :endTms)" +
-            "or (reservation.startTms <= :startTms and reservation.endTms >= :endTms)) " +
+            "where ((reservation.startTs >= :startTs and reservation.startTs < :endTs) " +
+            "or (reservation.endTs > :startTs and reservation.endTs <= :endTs)" +
+            "or (reservation.startTs <= :startTs and reservation.endTs >= :endTs)) " +
             "and reservation.room.id = :roomId " +
             "and reservation.reservationStatus.name not like 'CANCELLED'")
     List<Reservation> findActiveRoomReservationsInTimePeriod(
-            @Param("startTms") Timestamp startTms,
-            @Param("endTms") Timestamp endTms,
+            @Param("startTs") Timestamp startTs,
+            @Param("endTs") Timestamp endTs,
             @Param("roomId") int roomId
     );
 

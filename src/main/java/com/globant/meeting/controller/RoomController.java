@@ -29,11 +29,11 @@ public class RoomController {
     public List<RoomDTO> fetchRoomsByConditions(@PathVariable int requiredSeatsNumber,
                                                 @PathVariable boolean isMultimediaRequired,
                                                 @PathVariable
-                                             @DateTimeFormat(pattern = ROOMS_FETCHING_WITH_CONDITIONS_DATE_FORMAT)
-                                                            Date startDate,
+                                                @DateTimeFormat(pattern = ROOMS_FETCHING_WITH_CONDITIONS_DATE_FORMAT)
+                                                        Date startDate,
                                                 @PathVariable
-                                             @DateTimeFormat(pattern = ROOMS_FETCHING_WITH_CONDITIONS_DATE_FORMAT)
-                                                            Date endDate){
+                                                @DateTimeFormat(pattern = ROOMS_FETCHING_WITH_CONDITIONS_DATE_FORMAT)
+                                                        Date endDate){
         return roomService.getRoomsByConditions(requiredSeatsNumber, isMultimediaRequired,
                 new Timestamp(startDate.getTime()), new Timestamp(endDate.getTime()));
     }

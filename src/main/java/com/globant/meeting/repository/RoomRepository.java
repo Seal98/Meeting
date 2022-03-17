@@ -23,9 +23,9 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
 
     @Query("select room from Room room where " +
             "room not in (select reservation.room from Reservation reservation " +
-            "where ((reservation.startTms >= :startTms and reservation.startTms < :endTms) " +
-            "or (reservation.endTms > :startTms and reservation.endTms <= :endTms)" +
-            "or (reservation.startTms <= :startTms and reservation.endTms >= :endTms)) " +
+            "where ((reservation.startTs >= :startTs and reservation.startTs < :endTs) " +
+            "or (reservation.endTs > :startTs and reservation.endTs <= :endTs)" +
+            "or (reservation.startTs <= :startTs and reservation.endTs >= :endTs)) " +
             "and reservation.reservationStatus.name not like 'CANCELLED') " +
             "and (room.isMultimediaAvailable = TRUE or room.isMultimediaAvailable = :isMultimediaRequired) " +
             "and room.seatsNumber >= :requiredSeatsNumber " +
@@ -33,8 +33,8 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
     List<Room> findRoomsByConditions(
             @Param("requiredSeatsNumber") int requiredSeatsNumber,
             @Param("isMultimediaRequired") boolean isMultimediaRequired,
-            @Param("startTms") Timestamp startTms,
-            @Param("endTms") Timestamp endTms
+            @Param("startTs") Timestamp startTs,
+            @Param("endTs") Timestamp endTs
     );
 
 }

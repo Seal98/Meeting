@@ -26,4 +26,7 @@ public class ReservationStatus {
     @Column(name = "NAME")
     private String name;
 
+    @Column(name = "DESCRIPTION")
+    private String description;
+
 }

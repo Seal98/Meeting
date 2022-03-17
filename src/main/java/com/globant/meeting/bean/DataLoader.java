@@ -47,6 +47,7 @@ public class DataLoader implements CommandLineRunner {
 
             Building building = Building.builder()
                     .name("Globant Bel")
+                    .address("Prytyckaha 79")
                     .build();
             buildingRepository.save(building);
 
@@ -149,12 +150,12 @@ public class DataLoader implements CommandLineRunner {
                 .build();
     }
 
-    private Reservation createReservation(Room room, Timestamp startTms, Timestamp endTms, ReservationType reservationType,
+    private Reservation createReservation(Room room, Timestamp startTs, Timestamp endTs, ReservationType reservationType,
                                           ReservationStatus reservationStatus) {
         return Reservation.builder()
                 .room(room)
-                .startTms(startTms)
-                .endTms(endTms)
+                .startTs(startTs)
+                .endTs(endTs)
                 .reservationType(reservationType)
                 .reservationStatus(reservationStatus)
                 .build();

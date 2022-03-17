@@ -16,9 +16,9 @@ public class ReservationDTO {
 
     private int id;
 
-    private Timestamp startTms;
+    private Timestamp startTs;
 
-    private Timestamp endTms;
+    private Timestamp endTs;
 
     private ReservationType reservationType;
 
