@@ -36,8 +36,11 @@ public class RoomServiceImplTest {
     @Test
     @DisplayName("10.0.0 Check if the room eligibility check by input params works as expected")
     void checkIfEligibleRoom() {
-        assert roomService.findEligibleRoom(room.getId(), room.getSeatsNumber(), room.isMultimediaAvailable())
-                .equals(room);
+        Room eligibleRoom = roomService.findEligibleRoom(room.getId(), room.getSeatsNumber(), room.isMultimediaAvailable());
+        assert eligibleRoom.getId() == room.getId();
+        assert eligibleRoom.getNumber() == room.getNumber();
+        assert eligibleRoom.getSeatsNumber() == room.getSeatsNumber();
+        assert eligibleRoom.isMultimediaAvailable() == room.isMultimediaAvailable();
     }
 
 }
