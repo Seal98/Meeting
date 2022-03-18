@@ -44,7 +44,7 @@ database management system (*PostgreSQL*, *etc...*).
 
 ![](image/DB_schema.png)
 
-The *H2* database is available from [Link](http://localhost:8080/h2-console)
+The *H2* database is available from [Link](http://localhost:8080/h2-console) (after running spring boot application)
 
 Then find *JDBC URL* inside server logs:
 
@@ -57,7 +57,7 @@ and paste this value into the *JDBC URL* field
 
 **API**
 
-*Swagger*:
+*Swagger (after running spring boot application)*:
 
 - JSON API Docs: http://localhost:8080/v2/api-docs
 
