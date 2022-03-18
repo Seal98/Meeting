@@ -43,9 +43,4 @@ public class ReservationServiceImplTest {
         assert reservation != null && reservationService.getReservationById(reservation.getId()).equals(reservation);
     }
 
-    @Test
-    void checkIfEligibleRoom() {
-
-    }
-
 }
