@@ -34,6 +34,8 @@ Adding test coverage to your implementation will be valued.
 
 ![](image/Test_coverage.png)
 
+![](image/tests_running_result.png)
+
 **Details:**
 
 In order to facilitate the testing process from your side, I used
